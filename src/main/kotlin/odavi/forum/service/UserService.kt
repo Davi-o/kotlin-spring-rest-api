@@ -1,6 +1,6 @@
-package br.com.alura.forum.service
+package odavi.forum.service
 
-import br.com.alura.forum.model.ForumUser
+import odavi.forum.model.ForumUser
 import org.springframework.stereotype.Service
 
 @Service

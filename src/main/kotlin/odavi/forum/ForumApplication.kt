@@ -1,4 +1,4 @@
-package br.com.alura.forum
+package odavi.forum
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

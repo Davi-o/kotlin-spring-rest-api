@@ -1,4 +1,4 @@
-package br.com.alura.forum.model
+package odavi.forum.model
 
 data class Course(
         val id: Long? = null,

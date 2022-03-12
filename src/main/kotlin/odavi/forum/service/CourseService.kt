@@ -1,6 +1,6 @@
-package br.com.alura.forum.service
+package odavi.forum.service
 
-import br.com.alura.forum.model.Course
+import odavi.forum.model.Course
 import org.springframework.stereotype.Service
 
 @Service
@@ -16,7 +16,7 @@ class CourseService(var courses: List<Course>) {
         courses = listOf(course)
     }
 
-    fun findById(id: Long): Course{
+    fun findById(id: Long): Course {
         return courses.stream().filter {
                 course -> course.id == id
         }.findFirst().get()

@@ -1,6 +1,7 @@
 package odavi.forum.service
 
 import odavi.forum.dto.TopicForm
+import odavi.forum.dto.TopicFormUpdate
 import odavi.forum.dto.TopicView
 import odavi.forum.mapper.TopicFormMapper
 import odavi.forum.mapper.TopicViewMapper
@@ -22,11 +23,7 @@ class TopicService(
     }
 
     fun findById(id: Long): TopicView {
-        val topic = topics.stream().filter { t ->
-            t.id == id
-        }.findFirst().get()
-
-        return topicViewMapper.map(topic)
+        return topicViewMapper.map(getTopicById(id))
     }
 
     fun register(topicForm: TopicForm) {
@@ -36,5 +33,24 @@ class TopicService(
         topics = topics.plus(topic)
     }
 
+    fun getTopicById(id: Long): Topic {
+        return topics.stream().filter { t ->
+            t.id == id
+        }.findFirst().get()
+    }
+
+    fun update(topicForm: TopicFormUpdate) {
+        val topic = getTopicById(topicForm.id)
+        topics = topics.minus(topic).plus(Topic(
+            id = topicForm.id,
+            title = topicForm.title,
+            message = topicForm.message,
+            author = topic.author,
+            course = topic.course,
+            answers = topic.answers,
+            status = topic.status,
+            createDate = topic.createDate
+        ))
+    }
 
 }

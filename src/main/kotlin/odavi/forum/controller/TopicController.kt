@@ -1,8 +1,8 @@
 package odavi.forum.controller
 
 import odavi.forum.dto.TopicForm
+import odavi.forum.dto.TopicFormUpdate
 import odavi.forum.dto.TopicView
-import odavi.forum.model.Topic
 import odavi.forum.service.TopicService
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -22,8 +22,12 @@ class TopicController(private val service: TopicService) {
     }
 
     @PostMapping
-    fun register(@RequestBody @Valid topic: TopicForm) {
-        service.register(topic)
+    fun register(@RequestBody @Valid topicForm: TopicForm) {
+        service.register(topicForm)
     }
 
+    @PutMapping
+    fun update(@RequestBody @Valid topicForm: TopicFormUpdate) {
+        service.update(topicForm)
+    }
 }
